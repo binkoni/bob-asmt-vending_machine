@@ -11,7 +11,9 @@ private:
     View* m_view;
 public:
     explicit Presenter();
-    void onButtonClicked(ButtonType buttonType);
+    void onCoinButtonClicked(CoinValue amount);
+    void onProductButtonClicked(ProductPrice price);
+    void onReturnButtonClicked();
     void addModel(Model* model);
     void addView(View* view);
 };

@@ -17,33 +17,18 @@ void Presenter::addView(View* view) {
     m_view = view;
 }
 
-void Presenter::onButtonClicked(ButtonType buttonType)
+void Presenter::onCoinButtonClicked(CoinValue coinValue)
 {
-    switch(buttonType) {
-    case ButtonType::TEA:
-        m_model->addMoney(static_cast<int>(Price::TEA));
-        break;
-    case ButtonType::COKE:
-        m_model->addMoney(static_cast<int>(Price::COKE));
-        break;
-    case ButtonType::COFFEE:
-        m_model->addMoney(static_cast<int>(Price::COFFEE));
-        break;
-    case ButtonType::RETURN:
-        m_view->returnCoins(m_model->returnCoins());
-        break;
-    case ButtonType::COIN_10:
-        m_model->addMoney(10);
-        break;
-    case ButtonType::COIN_50:
-        m_model->addMoney(50);
-        break;
-    case ButtonType::COIN_100:
-        m_model->addMoney(100);
-        break;
-    case ButtonType::COIN_500:
-        m_model->addMoney(500);
-        break;
-    }
+    m_model->addMoney(static_cast<int>(coinValue));
     m_view->refresh();
+}
+
+void Presenter::onProductButtonClicked(ProductPrice productPrice)
+{
+    m_model->addMoney(static_cast<int>(productPrice));
+    m_view->refresh();
+}
+
+void Presenter::onReturnButtonClicked() {
+    m_view->returnCoins(m_model->returnCoins());
 }

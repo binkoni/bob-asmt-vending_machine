@@ -14,15 +14,15 @@ Widget::Widget(QWidget *parent) :
 void Widget::returnCoins(std::vector<Coin> coins) {
     for(auto&& coin : coins) {
         QMessageBox msg;
-        msg.information(nullptr, QString("returning coins"), QString(tr("Coin %1 : %2")).arg(coin.value).arg(coin.count));
+        msg.information(nullptr, QString("COINS"), QString(tr("Coin %1 : %2")).arg(coin.value).arg(coin.count));
     }
 }
 
 void Widget::refresh() {
     ui->lcd->display(m_model->money());
-    ui->pb_coffee->setEnabled(m_model->money() >= -static_cast<int>(Price::COFFEE));
-    ui->pb_tea->setEnabled(m_model->money() >= -static_cast<int>(Price::TEA));
-    ui->pb_coke->setEnabled(m_model->money() >= -static_cast<int>(Price::COKE));
+    ui->pb_coffee->setEnabled(m_model->money() >= -static_cast<int>(ProductPrice::COFFEE));
+    ui->pb_tea->setEnabled(m_model->money() >= -static_cast<int>(ProductPrice::TEA));
+    ui->pb_coke->setEnabled(m_model->money() >= -static_cast<int>(ProductPrice::COKE));
 }
 
 Widget::~Widget()
@@ -32,41 +32,40 @@ Widget::~Widget()
 
 void Widget::on_pb_10_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::COIN_10);
+    m_presenter->onCoinButtonClicked(CoinValue::COIN_10);
 }
 
 void Widget::on_pb_50_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::COIN_50);
+    m_presenter->onCoinButtonClicked(CoinValue::COIN_50);
 }
 
 void Widget::on_pb_100_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::COIN_100);
+    m_presenter->onCoinButtonClicked(CoinValue::COIN_100);
 }
 
 void Widget::on_pb_500_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::COIN_500);
+    m_presenter->onCoinButtonClicked(CoinValue::COIN_500);
 }
 
 void Widget::on_pb_coffee_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::COFFEE);
+    m_presenter->onProductButtonClicked(ProductPrice::COFFEE);
 }
 
 void Widget::on_pb_tea_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::TEA);
+    m_presenter->onProductButtonClicked(ProductPrice::TEA);
 }
 
 void Widget::on_pb_coke_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::COKE);
+    m_presenter->onProductButtonClicked(ProductPrice::COKE);
 }
-
 
 void Widget::on_pb_return_clicked()
 {
-    m_presenter->onButtonClicked(ButtonType::RETURN);
+    m_presenter->onReturnButtonClicked();
 }

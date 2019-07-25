@@ -6,18 +6,14 @@ struct Coin {
     int count;
 };
 
-enum class ButtonType {
-    RETURN,
-    COFFEE,
-    TEA,
-    COKE,
-    COIN_10,
-    COIN_50,
-    COIN_100,
-    COIN_500
+enum class CoinValue {
+    COIN_10 = 10,
+    COIN_50 = 50,
+    COIN_100 = 100,
+    COIN_500 = 500
 };
 
-enum class Price {
+enum class ProductPrice {
     COFFEE = -100,
     TEA = -150,
     COKE = -200

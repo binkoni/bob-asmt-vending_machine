@@ -1,1 +1,6 @@
 *.pro.user
+*.o
+moc_predefs.h
+moc_widget.cpp
+ui_widget.h
+vending_machine
